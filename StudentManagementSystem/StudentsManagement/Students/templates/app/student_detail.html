@@ -1,0 +1,38 @@
+<div class="student-card">
+    <div class="student-info">
+        <div class="info-item">
+            <span class="info-label">Name</span>
+            <span class="info-value">{{ student.name }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ student.email }}</span>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 30px; font-size: 1.25rem; color: #4a5568;">Subjects</h3>
+    <ul style="margin: 10px 0 20px 20px; color: #2d3748;">
+        {% for subject in subjects %}
+            <li>{{ subject.name }}</li>
+        {% empty %}
+            <li>No subjects enrolled.</li>
+        {% endfor %}
+    </ul>
+
+    <h3 style="margin-top: 20px; font-size: 1.25rem; color: #4a5568;">Grades</h3>
+    <ul style="margin: 10px 0 20px 20px; color: #2d3748;">
+        {% for grade in grades %}
+            <li>
+                <strong>{{ grade.subject.name }}</strong> –
+                {{ grade.grade_type }}:
+                <span style="font-weight: 600; color: #667eea;">{{ grade.score }}</span>
+            </li>
+        {% empty %}
+            <li>No grades available.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="action-buttons" style="margin-top: 30px;">
+        <a href="{% url 'student_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
